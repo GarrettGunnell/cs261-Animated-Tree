@@ -1,11 +1,15 @@
+from tree import BinaryTree
 
+t = BinaryTree()
 
 def setup():
     fullScreen()
+    t.set_x(width // 2)
+    t.set_y(100)
     
 
 def draw():
     background(255)
     noStroke()
-    fill(color(200, 100, 50, 150))
-    ellipse(width // 2, height // 2, 100, 100)
+    t.draw()
+    
