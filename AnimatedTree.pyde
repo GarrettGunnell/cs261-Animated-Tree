@@ -13,3 +13,5 @@ def draw():
     noStroke()
     t.draw()
     
+def mouseClicked():
+    t.insert()

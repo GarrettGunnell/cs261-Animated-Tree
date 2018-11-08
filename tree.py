@@ -19,22 +19,36 @@ class BinaryTree():
     def set_y(self, y):
         self.y = y
         
-    def draw(self):
+    def draw_self(self):
+        noStroke()
         fill(self.color)
-        ellipse(self.x, self.y, 50, 50)
+        ellipse(self.x, self.y, 25, 25)
+        try:
+            stroke(10)
+            line(self.parent.x, self.parent.y, self.x, self.y)
+        except:
+            pass
+            
+    def draw(self):
+        self.draw_self()
+        
+        if self.left is not None:
+            self.left.draw()
+        if self.right is not None:
+            self.right.draw()
         
     def insert(self):
         rand = random.randint(0, 100)
         
         if rand >= 50:
             if self.right is None:
-                self.right = BinaryTree(self.x * 1.5, self.y + 50)
+                self.right = BinaryTree(self.x * 1.25, self.y + 100)
                 self.right.parent = self
             else:
                 self.right.insert()
         else:
             if self.left is None:
-                self.left = BinaryTree(self.x // 2, self. y + 50)
+                self.left = BinaryTree(self.x * 0.75, self. y + 100)
                 self.left.parent = self
             else:
                 self.left.insert()
