@@ -5,6 +5,7 @@ class BinaryTree():
     def __init__(self, x = 0, y = 0):
         self.x = x
         self.y = y
+        self.indentation = 400
         self.color = color(167, 105, 181, 150)
         self.left = None
         self.right = None
@@ -42,13 +43,15 @@ class BinaryTree():
         
         if rand >= 50:
             if self.right is None:
-                self.right = BinaryTree(self.x * 1.25, self.y + 100)
+                self.right = BinaryTree(self.x + (self.indentation), self.y + 100)
+                self.right.indentation = self.indentation * 0.5
                 self.right.parent = self
             else:
                 self.right.insert()
         else:
             if self.left is None:
-                self.left = BinaryTree(self.x * 0.75, self. y + 100)
+                self.left = BinaryTree(self.x - (self.indentation), self. y + 100)
+                self.left.indentation = self.indentation * 0.5
                 self.left.parent = self
             else:
                 self.left.insert()
