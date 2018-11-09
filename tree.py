@@ -1,11 +1,13 @@
 import random
+import math
 
 class BinaryTree():
     
     def __init__(self, x = 0, y = 0):
         self.x = x
         self.y = y
-        self.indentation = 400
+        self.indentation = 450
+        self.displacement_modifier = random.uniform(0.1, 0.3)
         self.color = color(167, 105, 181, 150)
         self.left = None
         self.right = None
@@ -13,6 +15,9 @@ class BinaryTree():
         
     def is_leaf(self):
         return self.left is None and self.right is None
+    
+    def has_parent(self):
+        return self.parent is not None
         
     def set_x(self, x):
         self.x = x
@@ -20,9 +25,12 @@ class BinaryTree():
     def set_y(self, y):
         self.y = y
         
-    def draw_self(self):
+    def draw_self(self, time):
         noStroke()
         fill(self.color)
+        displacement = map(math.sin(time), -1, 1, -(self.displacement_modifier), self.displacement_modifier)
+        if self.has_parent():
+            self.y += displacement
         ellipse(self.x, self.y, 25, 25)
         try:
             stroke(10)
@@ -30,13 +38,13 @@ class BinaryTree():
         except:
             pass
             
-    def draw(self):
-        self.draw_self()
+    def draw(self, time):
+        self.draw_self(time)
         
         if self.left is not None:
-            self.left.draw()
+            self.left.draw(time)
         if self.right is not None:
-            self.right.draw()
+            self.right.draw(time)
         
     def insert(self):
         rand = random.randint(0, 100)

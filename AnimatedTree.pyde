@@ -1,4 +1,5 @@
 from tree import BinaryTree
+import time
 
 t = BinaryTree()
 
@@ -11,7 +12,7 @@ def setup():
 def draw():
     background(255)
     noStroke()
-    t.draw()
+    t.draw(time.time())
     
 def mouseClicked():
     t.insert()
