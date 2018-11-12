@@ -1,4 +1,5 @@
 from tree import BinaryTree
+from rain import Rain
 import time
 
 t = BinaryTree()
