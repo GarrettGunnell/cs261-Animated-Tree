@@ -7,7 +7,6 @@ class BinaryTree():
         self.x = x
         self.y = y
         self.indentation = 450
-        self.displacement_modifier = random.uniform(0.1, 0.3)
         self.color = color(167, 105, 181, 150)
         self.left = None
         self.right = None
@@ -35,14 +34,13 @@ class BinaryTree():
         noStroke()
         fill(self.color)
         ellipse(self.x, self.y, 26, 26)
-        displacement = map(math.sin(time), -1, 1, -(self.displacement_modifier), self.displacement_modifier)
         if self.has_parent():
-            self.y += displacement
+            self.grow()
             stroke(167, 105, 181, 150)
             if self.is_left_child():
-                line(self.parent.x - 7, self.parent.y + 13, self.x + 7, self.y - 13)
+                line(self.parent.x, self.parent.y, self.x, self.y)
             elif self.is_right_child():
-                line(self.parent.x + 7, self.parent.y + 13, self.x - 7, self.y - 13)
+                line(self.parent.x, self.parent.y, self.x, self.y)
             
     def draw(self, time):
         self.draw_self(time)
@@ -57,18 +55,23 @@ class BinaryTree():
         
         if rand >= 50:
             if self.right is None:
-                self.right = BinaryTree(self.x + (self.indentation), self.y + 160)
+                self.right = BinaryTree(self.x, self.y)
                 self.right.indentation = self.indentation * 0.5
                 self.right.parent = self
             else:
                 self.right.insert()
         else:
             if self.left is None:
-                self.left = BinaryTree(self.x - (self.indentation), self. y + 160)
+                self.left = BinaryTree(self.x, self.y)
                 self.left.indentation = self.indentation * 0.5
                 self.left.parent = self
             else:
                 self.left.insert()
                 
-    def traverse(self):
-        pass
+    def grow(self):
+        if self.y < self.parent.y + 160:
+            self.y += 1
+        if self.is_left_child() and self.x > (self.parent.x - self.parent.indentation):
+            self.x -= 1
+        if self.is_right_child() and self.x < (self.parent.x + self.parent.indentation):
+            self.x += 1
