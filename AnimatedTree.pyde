@@ -3,6 +3,7 @@ from rain import Rain
 import time
 
 t = BinaryTree()
+r = Rain(100, 0)
 
 def setup():
     fullScreen()
@@ -14,6 +15,8 @@ def draw():
     background(255)
     noStroke()
     t.draw(time.time())
+    r.move()
+    r.draw()
     
 def mouseClicked():
     t.insert()
