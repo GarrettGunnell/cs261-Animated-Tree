@@ -10,7 +10,7 @@ class Rain():
         else:
             self.angle = -3.05
         self.speed = random.uniform(20, 25)
-        self.color = color(175)
+        self.color = color(0)
         self.length_ = random.uniform(30, 50)
         self.width_ = random.uniform(0.1, 0.15)
         
@@ -23,8 +23,8 @@ class Rain():
             self.angle = random.uniform(3.0, 3.10)
         else:
             self.angle = random.uniform(-3.1, -3.0)
-        self.speed = random.uniform(20, 25)
-        self.color = color(175)
+        self.speed = random.uniform(20, 30)
+        self.color = color(0)
         self.length_ = random.uniform(30, 50)
         self.width_ = random.uniform(0.1, 0.15)
         
@@ -34,7 +34,7 @@ class Rain():
             self.x += 0.2
         else:
             self.x -= 0.2
-        if self.y > height:
+        if self.y > 200:
             self.reset()
             
     def draw(self):
