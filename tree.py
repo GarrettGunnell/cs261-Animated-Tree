@@ -7,7 +7,7 @@ class BinaryTree():
         self.x = x
         self.y = y
         self.indentation = 450
-        self.color = color(167, 105, 181)
+        self.color = color(219, 194, 168)
         self.left = None
         self.right = None
         self.parent = None
@@ -36,7 +36,8 @@ class BinaryTree():
         ellipse(self.x, self.y, 26, 26)
         if self.has_parent():
             self.grow()
-            stroke(167, 105, 181)
+            stroke(219, 194, 168)
+            strokeWeight(2)
             if self.is_left_child():
                 line(self.parent.x, self.parent.y, self.x, self.y)
             elif self.is_right_child():
