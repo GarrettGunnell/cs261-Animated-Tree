@@ -1,6 +1,5 @@
 from tree import BinaryTree
 from rain import Rain
-import time
 import random
 
 t = BinaryTree()
@@ -14,18 +13,20 @@ def setup():
     global Tree
     fullScreen()
     backgroundImage = loadImage("Tree.png")
+    backgroundImage.resize(width, height)
     Tree = loadImage("Tree2.png")
+    Tree.resize(width, height)
     t.set_x(width // 2)
     t.set_y(190)
     for i in range(NUM_RAIN_DROPS):
-        rain.append(Rain(random.uniform(0, width), random.uniform(0, 200)))
+        rain.append(Rain(random.uniform(0, width), random.uniform(0, height // 5)))
     
     
 
 def draw():
     background(backgroundImage)
     noStroke()
-    t.draw(time.time())
+    t.draw()
     for i in range(NUM_RAIN_DROPS):
         rain[i].move()
         rain[i].draw()

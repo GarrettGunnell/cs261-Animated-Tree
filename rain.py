@@ -38,7 +38,7 @@ class Rain():
             self.x += 0.2
         else:
             self.x -= 0.2
-        if self.y > 220:
+        if self.y > (height // 5):
             self.reset()
             
     def draw(self):

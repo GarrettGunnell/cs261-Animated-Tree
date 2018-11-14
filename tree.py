@@ -30,7 +30,7 @@ class BinaryTree():
     def set_y(self, y):
         self.y = y
         
-    def draw_self(self, time):
+    def draw_self(self):
         noStroke()
         fill(self.color)
         ellipse(self.x, self.y, 26, 26)
@@ -43,13 +43,13 @@ class BinaryTree():
             elif self.is_right_child():
                 line(self.parent.x, self.parent.y, self.x, self.y)
             
-    def draw(self, time):
-        self.draw_self(time)
+    def draw(self):
+        self.draw_self()
         
         if self.left is not None:
-            self.left.draw(time)
+            self.left.draw()
         if self.right is not None:
-            self.right.draw(time)
+            self.right.draw()
         
     def insert(self):
         rand = random.randint(0, 100)
